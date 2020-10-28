@@ -1,0 +1,52 @@
+<h1>Изменение характеристики: <?=$id?></h1>
+<?php include '_menu.phtml'?>
+<div class="row">
+    <main class="col-sm-12 col-md-8 col-lg-9">
+        <form action="/admin/actions/update_parameter.php" method="POST">
+            <input type="hidden" name="id" value="<?=$parameter->id?>">
+            <fieldset>
+                <legend>Редактирование характеристики</legend>
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="name">Название характеристики</label>
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <input type="text" id="name" required name="name" value="<?=$parameter->name?>">
+                    </div>
+                </div>
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+                      
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <input class="tertiary" type="submit" value="Сохранить">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <a href="/admin/add_parameter_value.php?parameter_id=<?=$id?>" class="button">Добавить значение</a>
+        <a href="/admin/edit_parameter.php?id=<?=$id?>" class="button">Список значений</a>
+        <table>
+            <caption>Список значений</caption>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Название</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($parameterValues as $parameterValue):?>
+                <tr>
+                    <td data-label="id"><?=$parameterValue['id']?></td>
+                    <td data-label="Название"><?=$parameterValue['name']?></td>
+                    <td data-label="Действия">
+                        <a href="/admin/edit_parameter_value.php?id=<?=$parameterValue['id']?>" class="button">Редактировать</a>
+                        <a href="/admin/actions/remove_parameter_value.php?id=<?=$parameterValue['id']?>" onclick="return confirm('Удалить значение <?=$parameterValue['id']?>?')" class="button secondary">Удалить</a>
+                    </td>
+                </tr>
+            <?php endforeach;?>
+            </tbody>
+        </table>
+    </main>
+</div>

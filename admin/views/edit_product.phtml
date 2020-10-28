@@ -1,0 +1,51 @@
+<h1>Изменение товара: <?=$id?></h1>
+<?php include '_menu.phtml'?>
+<div class="row">
+    <main class="col-sm-12 col-md-8 col-lg-9">
+        <form action="/admin/actions/update_product.php" method="POST">
+            <input type="hidden" name="id" value="<?=$product->id?>">
+            <fieldset>
+                <legend>Новый товар</legend>
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="name">Название</label>
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <input type="text" id="name" required name="name" value="<?=$product->name?>">
+                    </div>
+                </div>
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="price">Цена</label>
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <input type="number" id="price" required name="price" value="<?=$product->price?>">
+                    </div>
+                </div>
+                <?php foreach ($parameters as $parameter):?>
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="parameter_<?=$parameter->id?>"><?=$parameter->name?></label>
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <select name="parameter_<?=$parameter->id?>" id="parameter_<?=$parameter->id?>">
+                            <option value="">-- Выберите <?=mb_strtolower($parameter->name)?> --</option>
+                            <?php foreach ($parameter->values as $value):?>
+                                <option value="<?=$value['id']?>" <?=in_array($value['id'], $parameterValuesId)?'selected="selected"':''?>><?=$value['name']?></option>
+                            <?php endforeach;?>
+                        </select>   
+                    </div>
+                </div>
+                <?php endforeach;?>
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+                      
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <input class="tertiary" type="submit" value="Сохранить">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+</div>

@@ -1,0 +1,9 @@
+<form class="ui form" action="/admin/actions/add_parameter.php" method="POST">
+    <div class="field">
+        <label for="name">Название</label>
+        <input type="text" id="name" required name="name" value="<?=$flash?$flash['name']:''?>">
+    </div>
+    <div class="field">
+        <input class="ui orange button" type="submit" value="Добавить">
+    </div>
+</form>

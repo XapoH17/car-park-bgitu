@@ -1,0 +1,26 @@
+<h1>Изменение значения</h1>
+<?php include '_menu.phtml'?>
+<div class="row">
+    <main class="col-sm-12 col-md-8 col-lg-9">
+        <form action="/admin/actions/update_parameter_value.php" method="POST">
+            <input type="hidden" name="id" value="<?=$parameterValue->id?>">
+            <fieldset>
+                <legend>Редактирование значения для параметра <?=$parameter->name?></legend>
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+                        <label for="name">Название значения</label>
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <input type="text" id="name" required name="name" value="<?=$parameterValue->name?>">
+                    </div>
+                </div>
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+                      
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <input class="tertiary" type="submit" value="Сохранить">
+                    </div>
+                </div>
+            </fieldset>
+        </form>

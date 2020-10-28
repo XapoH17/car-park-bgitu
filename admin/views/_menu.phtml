@@ -1,0 +1,14 @@
+<?php if (isAuth()):?>
+    <div class="ui five item menu">
+        <a href="/admin/add_product.php" class="item">Добавить автомобиль</a>
+        <a href="/admin/manage_products.php" class="item">Список автомобилей</a>
+        <a href="/admin/add_parameter.php" class="item">Добавить характеристику</a>
+        <a href="/admin/parameters.php" class="item">Характеристики</a>
+        <a href="/admin/actions/logout.php" class="item">Выйти</a>
+    </div>
+<?php else:?>
+    <div class="ui five item menu">
+        <a href="/admin/" class="item">Админка</a>
+        <a href="/" class="item">Сайт</a>
+    </div>
+<?php endif;?>

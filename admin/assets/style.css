@@ -1,0 +1,9 @@
+.responsive-label {
+    align-items: center;
+}
+.responsive-label .col-md-3 {
+    text-align: right;
+}
+.responsive-label input, .responsive-label select {
+    width: 270px;
+}

@@ -1,0 +1,24 @@
+<form class="ui form" action="/admin/actions/add_product.php" method="POST">
+    <div class="field">
+        <label for="name">Название</label>
+        <input type="text" id="name" required name="name" value="<?=$flash?$flash['name']:''?>">
+    </div>
+    <div class="field">
+        <label for="price">Цена</label>
+        <input type="number" id="price" required name="price" value="<?=$flash?$flash['price']:''?>">
+    </div>
+    <?php foreach ($parameters as $parameter):?>
+        <div class="field">
+            <label for="parameter_<?=$parameter->id?>"><?=$parameter->name?></label>
+            <select name="parameter_<?=$parameter->id?>" id="parameter_<?=$parameter->id?>">
+                <option value="">-- Выберите <?=mb_strtolower($parameter->name)?> --</option>
+                <?php foreach ($parameter->values as $value):?>
+                    <option value="<?=$value['id']?>"><?=$value['name']?></option>
+                <?php endforeach;?>
+            </select>   
+        </div>
+    <?php endforeach;?>
+    <div class="field">
+        <input class="ui orange button" type="submit" value="Добавить">
+    </div>
+</form>

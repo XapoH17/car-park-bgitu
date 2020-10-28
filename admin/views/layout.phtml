@@ -1,0 +1,14 @@
+<?php include '_menu.phtml'?>
+<div class="ui raised very padded text container segment">
+    <h2 class="ui header">
+    <img src="/assets/images/icons/plugin.png">
+    <div class="content">
+        <?=$header?>
+        <?php if ($subheader):?>
+            <div class="sub header"><?=$subheader?></div>
+        <?php endif;?>
+    </div>
+    </h2>
+    
+    <?=@$page?>
+</div>
