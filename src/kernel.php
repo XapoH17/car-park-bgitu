@@ -5,6 +5,8 @@ const VIEWS_DIR = 'views'  . DIRECTORY_SEPARATOR;
 
 $basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR;
 
+$envFilePath = $basePath . '../.env';
+
 require_once $basePath . 'connect.php';
 
 require_once $basePath . 'validators.php';
