@@ -10,16 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
 validateRequired($_POST, 'id');
 validateRequired($_POST, 'name');
-validateRequired($_POST, 'price');
 
 $id = intval($_POST['id']);
 $name = mysqli_real_escape_string($link, trim($_POST['name']));
-$price = intval($_POST['price']);
 
-if (!mysqli_query($link, "UPDATE products SET name='$name', price=$price WHERE id=$id")) {
+
+if (!mysqli_query($link, "UPDATE products SET name='$name', WHERE id=$id")) {
     $_SESSION['flash'] = [
         'name' => $name,
-        'price' => $price,
         'message' => mysqli_error($link),
     ];
 

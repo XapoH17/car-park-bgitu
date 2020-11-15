@@ -31,10 +31,12 @@ foreach($parameterValueProduct as $parameterValueProductItem) {
     
 $parameters = getParameters();
 
-include 'views' . DIRECTORY_SEPARATOR . '_header.phtml';
-
-include 'views' . DIRECTORY_SEPARATOR . 'edit_product.phtml';
-
-include 'views' . DIRECTORY_SEPARATOR . '_footer.phtml';
+renderTemplate('edit_product', [
+    'header' => 'Изменение товара: ' . $id,
+    'parameters' => getParameters(),
+    'id' => $id,
+    'product' => $product,
+    'parameterValuesId' => $parameterValuesId,
+]);
 
 clearFlash();

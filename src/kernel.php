@@ -100,6 +100,8 @@ function getParameters() {
 }
 
 function renderTemplate($fileName = '', $data = []) {
+    global $flash;
+
     include VIEWS_DIR . '_header.phtml';
     
     extract($data);
@@ -119,6 +121,4 @@ function renderTemplate($fileName = '', $data = []) {
     }
     
     include VIEWS_DIR . 'layout.phtml';
-    
-    include VIEWS_DIR . '_footer.phtml';
 }

@@ -1,27 +1,26 @@
 <h1>Управление товарами</h1>
 <?php include '_menu.phtml';?>
-<form>
-    <input type="number" placeholder="Укажите НДС в %" required name="wat">
-    <button class="ui inverted yellow button">Расчитать</button>
-    <?php if ($wat):?>
-        <p>Сумма товаров на складе включая НДС <?=$wat?>%: <mark><?=$summWithWat?></mark></p>
-    <?php endif;?>
-</form>
-<form id="search">
-    <input type="text" placeholder="Введите поисковую фразу" name="q" value="<?=$q?>">
-    <select name="sort" class="ui fluid dropdown">
-        <?php foreach ($sortLabels as $sortKey => $label):?>
-            <option value="<?=$sortKey?>" <?=$sortKey == $currentSort ? 'selected="selected"':''?>$><?=$label?></option>
-        <?php endforeach;?>
-    </select>
-    <button class="ui inverted orange button">Отправить</button>
-    <?php if ($page > 1):?>
-        <a href="?page=<?=$page-1?>&sort=<?=$currentSort?>&q=<?=$q?>" class="ui violet button">&laquo; Предыдущая страница</a>
-    <?php endif?>
-   
-    <?php if ($page < ceil($productsCount/$perPage)):?>
-        <a href="?page=<?=$page+1?>&sort=<?=$currentSort?>&q=<?=$q?>" class="ui violet button">Следущая страница &raquo;</a>
-    <?php endif;?> 
+<form id="search" class="ui form">
+    <div class="inline fields">
+        <div class="eight wide field">
+            <input type="text" placeholder="Введите поисковую фразу" name="q" value="<?=$q?>">
+        </div>
+        <div class="eight wide field">
+            <select name="sort" class="ui search dropdown">
+                <?php foreach ($sortLabels as $sortKey => $label):?>
+                    <option value="<?=$sortKey?>" <?=$sortKey == $currentSort ? 'selected="selected"':''?>$><?=$label?></option>
+                <?php endforeach;?>
+            </select>
+        </div>
+        <button class="ui inverted orange button">Отправить</button>
+        <?php if ($page > 1):?>
+            <a href="?page=<?=$page-1?>&sort=<?=$currentSort?>&q=<?=$q?>" class="ui violet button">&laquo; Предыдущая страница</a>
+        <?php endif?>
+
+        <?php if ($page < ceil($productsCount/$perPage)):?>
+            <a href="?page=<?=$page+1?>&sort=<?=$currentSort?>&q=<?=$q?>" class="ui violet button">Следущая страница &raquo;</a>
+        <?php endif;?>
+    </div>
 </form>
 <table class="ui celled table">
     <caption>Товары</caption>
@@ -29,7 +28,6 @@
         <tr>
             <th>id</th>
             <th>Название</th>
-            <th>Цена</th>
             <?php foreach($parameters as $parameter):?>
                 <th><?=$parameter->name?></th>
             <?php endforeach;?>
@@ -41,7 +39,6 @@
         <tr>
             <td style="width: 20px;" data-label="id"><?=$product['id']?></td>
             <td data-label="Название"><?=$product['name']?></td>
-            <td data-label="Цена"><?=$product['price']?></td>
             <?php foreach($parameters as $parameter):?>
             <td data-label="<?=$parameter->name?>"><?=@$parameterToProductToParameterValue[$parameter->id][$product['id']]['name']?></td>
             <?php endforeach;?>

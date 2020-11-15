@@ -22,6 +22,12 @@ $parameter = mysqli_fetch_object($result);
 
 $parameterValues = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM parameter_values where parameter_id='$id'"), MYSQLI_ASSOC);
 
+renderTemplate('edit_parameter', [
+    'header' => 'Изменения характеристики',
+    'parameter' => $parameter,
+    'parameterValues' => $parameterValues
+]);
+
 include 'views' . DIRECTORY_SEPARATOR . '_header.phtml';
 
 include 'views' . DIRECTORY_SEPARATOR . 'edit_parameter.phtml';

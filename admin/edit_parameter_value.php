@@ -31,10 +31,10 @@ $parameterValue = mysqli_fetch_object($result);
 
 $parameter = mysqli_fetch_object(mysqli_query($link, "SELECT * FROM parameters where id=$parameterValue->parameter_id"));
 
-include 'views' . DIRECTORY_SEPARATOR . '_header.phtml';
-
-include 'views' . DIRECTORY_SEPARATOR . 'edit_parameter_value.phtml';
-
-include 'views' . DIRECTORY_SEPARATOR . '_footer.phtml';
+renderTemplate('edit_parameter_value', [
+    'header' => 'Редактирование значения для параметра',
+    'parameter' => $parameter,
+    'parameterValues' => $parameterValues
+]);
 
 clearFlash();

@@ -1,6 +1,6 @@
 <h1>Характеристики</h1>
 <?php include '_menu.phtml'?>
-<table>
+<table class="ui celled table">
     <caption>Список характеристик</caption>
     <thead>
         <tr>
@@ -15,8 +15,8 @@
             <td data-label="id"><?=$parameter['id']?></td>
             <td data-label="Название"><?=$parameter['name']?></td>
             <td data-label="Действия">
-                <a href="/admin/edit_parameter.php?id=<?=$parameter['id']?>" class="button">Редактировать</a>
-                <a href="/admin/actions/remove_parameter.php?id=<?=$parameter['id']?>" onclick="return confirm('Удалить характеристику <?=$parameter['id']?>?')" class="button secondary">Удалить</a>
+                <a href="/admin/edit_parameter.php?id=<?=$parameter['id']?>" class="ui inverted green button">Редактировать</a>
+                <a href="/admin/actions/remove_parameter.php?id=<?=$parameter['id']?>" onclick="return confirm('Удалить характеристику <?=$parameter['id']?>?')" class="ui inverted red button">Удалить</a>
             </td>
         </tr>
     <?php endforeach;?>

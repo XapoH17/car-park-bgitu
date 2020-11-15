@@ -4,11 +4,27 @@
     <img src="/assets/images/icons/plugin.png">
     <div class="content">
         <?=$header?>
-        <?php if ($subheader):?>
+        <?php if (isset($subheader) && $subheader):?>
             <div class="sub header"><?=$subheader?></div>
         <?php endif;?>
     </div>
     </h2>
-    
+
+    <?php if (isset($flash) && $flash):?>
+        <div class="row">
+            <main class="col-sm-12 col-md-8 col-lg-9">
+                <div class="row responsive-label">
+                    <div class="col-sm-12 col-md-3">
+
+                    </div>
+                    <div class="col-sm-12 col-md">
+                        <p><mark class="secondary"><?=is_array($flash) ? $flash['message'] : $flash?></mark></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    <?php endif;?>
+
+
     <?=@$page?>
 </div>

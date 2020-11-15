@@ -1,10 +1,35 @@
+<form class="ui form" action="/admin/actions/update_product.php" method="POST">
+    <input type="hidden" name="id" value="<?=$product->id?>">
+    <div class="field">
+        <label for="name">Название</label>
+        <input type="text" id="name" required name="name" value="<?=$product->name?>">
+    </div>
+    <?php foreach ($parameters as $parameter):?>
+        <div class="field">
+            <label for="parameter_<?=$parameter->id?>"><?=$parameter->name?></label>
+            <select name="parameter_<?=$parameter->id?>" id="parameter_<?=$parameter->id?>">
+                <option value="">-- Выберите <?=mb_strtolower($parameter->name)?> --</option>
+                <?php foreach ($parameter->values as $value):?>
+                    <option value="<?=$value['id']?>" <?=in_array($value['id'], $parameterValuesId)?'selected="selected"':''?>><?=$value['name']?></option>
+                <?php endforeach;?>
+            </select>
+        </div>
+    <?php endforeach;?>
+    <div class="field">
+        <input class="ui inverted green button" type="submit" value="Сохранить">
+    </div>
+</form>
+
+
+
+
 <h1>Изменение товара: <?=$id?></h1>
 <?php include '_menu.phtml'?>
 <div class="row">
     <main class="col-sm-12 col-md-8 col-lg-9">
-        <form action="/admin/actions/update_product.php" method="POST">
+        <form class="ui form" action="/admin/actions/update_product.php" method="POST">
             <input type="hidden" name="id" value="<?=$product->id?>">
-            <fieldset>
+            <div class="field">
                 <legend>Новый товар</legend>
                 <div class="row responsive-label">
                     <div class="col-sm-12 col-md-3">
@@ -33,19 +58,19 @@
                             <?php foreach ($parameter->values as $value):?>
                                 <option value="<?=$value['id']?>" <?=in_array($value['id'], $parameterValuesId)?'selected="selected"':''?>><?=$value['name']?></option>
                             <?php endforeach;?>
-                        </select>   
+                        </select>
                     </div>
                 </div>
                 <?php endforeach;?>
                 <div class="row responsive-label">
                     <div class="col-sm-12 col-md-3">
-                      
+
                     </div>
                     <div class="col-sm-12 col-md">
-                        <input class="tertiary" type="submit" value="Сохранить">
+                        <input class="ui inverted green button" type="submit" value="Сохранить">
                     </div>
                 </div>
-            </fieldset>
+            </div>
         </form>
     </main>
 </div>

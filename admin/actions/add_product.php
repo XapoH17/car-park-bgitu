@@ -9,15 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 
 validateRequired($_POST, 'name');
-validateRequired($_POST, 'price');
 
 $name = mysqli_real_escape_string($link, trim($_POST['name']));
-$price = intval($_POST['price']);
 
-if (!mysqli_query($link, "INSERT INTO products(name, price) VALUES ('$name', $price)")) {
+if (!mysqli_query($link, "INSERT INTO products(name) VALUES ('$name')")) {
     $_SESSION['flash'] = [
         'name' => $name,
-        'price' => $price,
         'message' => mysqli_error($link),
     ];
 

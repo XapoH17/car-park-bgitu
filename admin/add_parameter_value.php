@@ -18,12 +18,13 @@ if (!mysqli_num_rows($result)) {
     throw new Error('Parameter ' . $parameterId . ' not found.');
 }
 
+unset($parameterId, $result, $sql);
+
 $parameter = mysqli_fetch_object($result);
 
-include 'views' . DIRECTORY_SEPARATOR . '_header.phtml';
-
-include 'views' . DIRECTORY_SEPARATOR . 'add_parameter_value.phtml';
-
-include 'views' . DIRECTORY_SEPARATOR . '_footer.phtml';
+renderTemplate('add_parameter_value', [
+    'header' => 'Добавление значение характеристики',
+    'parameter' => $parameter,
+]);
 
 clearFlash();
