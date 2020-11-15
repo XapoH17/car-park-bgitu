@@ -7,15 +7,11 @@ checkAuth();
 $allowedSorts = [
     'name_asc',
     'name_desc',
-    'price_asc',
-    'price_desc',
 ];
 
 $sortLabels = [
     'name_asc' => 'От А до Я',
     'name_desc' => 'От Я до А',
-    'price_asc' => 'Цена по возрастанию',
-    'price_desc' => 'Цена по убыванию',
 ];
 
 $currentSort = 'name_asc';

@@ -15,7 +15,7 @@ $id = intval($_POST['id']);
 $name = mysqli_real_escape_string($link, trim($_POST['name']));
 
 
-if (!mysqli_query($link, "UPDATE products SET name='$name', WHERE id=$id")) {
+if (!mysqli_query($link, "UPDATE products SET name='$name' WHERE id=$id")) {
     $_SESSION['flash'] = [
         'name' => $name,
         'message' => mysqli_error($link),

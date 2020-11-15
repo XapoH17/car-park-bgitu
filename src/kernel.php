@@ -69,8 +69,6 @@ function getParameters() {
     
     $parametersAssoc = mysqli_fetch_all(mysqli_query($link, "SELECT * FROM parameters"), MYSQLI_ASSOC);
 
-    $prametersId = [];
-    
     $parametersByKeys = [];
 
     foreach ($parametersAssoc as $parameterItem) {
