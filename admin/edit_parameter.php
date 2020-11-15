@@ -28,10 +28,4 @@ renderTemplate('edit_parameter', [
     'parameterValues' => $parameterValues
 ]);
 
-include 'views' . DIRECTORY_SEPARATOR . '_header.phtml';
-
-include 'views' . DIRECTORY_SEPARATOR . 'edit_parameter.phtml';
-
-include 'views' . DIRECTORY_SEPARATOR . '_footer.phtml';
-
 clearFlash();

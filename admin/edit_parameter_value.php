@@ -34,7 +34,7 @@ $parameter = mysqli_fetch_object(mysqli_query($link, "SELECT * FROM parameters w
 renderTemplate('edit_parameter_value', [
     'header' => 'Редактирование значения для параметра',
     'parameter' => $parameter,
-    'parameterValues' => $parameterValues
+    'parameterValue' => $parameterValue
 ]);
 
 clearFlash();

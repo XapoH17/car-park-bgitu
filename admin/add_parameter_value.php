@@ -18,9 +18,9 @@ if (!mysqli_num_rows($result)) {
     throw new Error('Parameter ' . $parameterId . ' not found.');
 }
 
-unset($parameterId, $result, $sql);
-
 $parameter = mysqli_fetch_object($result);
+
+unset($parameterId, $result, $sql);
 
 renderTemplate('add_parameter_value', [
     'header' => 'Добавление значение характеристики',
