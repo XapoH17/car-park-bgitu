@@ -1,8 +1,12 @@
-<form class="ui form" action="/admin/actions/update_product.php" method="POST">
+<form class="ui form" action="/admin/actions/update_product.php" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?=$product->id?>">
     <div class="field">
         <label for="name">Название</label>
         <input type="text" id="name" required name="name" value="<?=$product->name?>">
+    </div>
+    <div class="field">
+        <label for="name">Фото</label>
+        <input type="file" id="file" name="file">
     </div>
     <?php foreach ($parameters as $parameter):?>
         <div class="field">

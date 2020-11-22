@@ -3,13 +3,13 @@ session_start();
 
 const VIEWS_DIR = 'views'  . DIRECTORY_SEPARATOR;
 
-$basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR;
+$basePath = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..') . DIRECTORY_SEPARATOR;
 
-$envFilePath = $basePath . '../.env';
+$envFilePath = $basePath . '.env';
 
-require_once $basePath . 'connect.php';
+require_once $basePath . 'src' . DIRECTORY_SEPARATOR . 'connect.php';
 
-require_once $basePath . 'validators.php';
+require_once $basePath . 'src' . DIRECTORY_SEPARATOR . 'validators.php';
 
 $flash = null;
 
@@ -98,7 +98,7 @@ function getParameters() {
 }
 
 function renderTemplate($fileName = '', $data = []) {
-    global $flash;
+    global $flash, $basePath;
 
     include VIEWS_DIR . '_header.phtml';
     

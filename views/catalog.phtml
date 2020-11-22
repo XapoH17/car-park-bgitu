@@ -2,6 +2,14 @@
 <?php foreach ($products as $product):?>
     <div class="card">
         <div class="section">
+            <?php
+            $filePath = 'images/products/' . $product['id'] . '.jpg';
+
+            if (!file_exists($basePath . $filePath)) {
+                $filePath = 'images/placeholders/product.jpg';
+            }
+            ?>
+            <img src="<?=$filePath?>">
             <h3><?=$product['name']?></h3>
         </div>
     </div>

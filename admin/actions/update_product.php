@@ -26,6 +26,14 @@ if (!mysqli_query($link, "UPDATE products SET name='$name' WHERE id=$id")) {
     exit;
 }
 
+/**
+ * @desc Загрузка файла
+ */
+
+//----
+// Какаято кодяря, которая в итоге загружает файл и ложит его в папку images/products/{id}.jpg
+//----
+
 $parameters = getParameters();
 
 foreach ($parameters as $parameter) {
