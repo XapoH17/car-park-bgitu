@@ -3,13 +3,13 @@ session_start();
 
 const VIEWS_DIR = 'views'  . DIRECTORY_SEPARATOR;
 
-$basePath = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..') . DIRECTORY_SEPARATOR;
+define('BASE_PATH', realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..') . DIRECTORY_SEPARATOR);
 
-$envFilePath = $basePath . '.env';
+$envFilePath = BASE_PATH . '.env';
 
-require_once $basePath . 'src' . DIRECTORY_SEPARATOR . 'connect.php';
+require_once BASE_PATH . 'src' . DIRECTORY_SEPARATOR . 'connect.php';
 
-require_once $basePath . 'src' . DIRECTORY_SEPARATOR . 'validators.php';
+require_once BASE_PATH . 'src' . DIRECTORY_SEPARATOR . 'validators.php';
 
 $flash = null;
 

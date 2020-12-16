@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Окт 29 2020 г., 20:56
--- Версия сервера: 10.3.13-MariaDB-log
--- Версия PHP: 7.1.32
+-- Хост: db
+-- Время создания: Дек 16 2020 г., 15:50
+-- Версия сервера: 10.5.5-MariaDB-1:10.5.5+maria~focal
+-- Версия PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `avto_salon_vw`
+-- База данных: `car-park`
 --
 
 DELIMITER $$
@@ -50,9 +49,10 @@ CREATE TABLE `parameters` (
 --
 
 INSERT INTO `parameters` (`id`, `name`) VALUES
-(1, 'Цвет'),
 (3, 'Двигатель'),
-(4, 'KПП');
+(4, 'KПП'),
+(6, 'Цвет'),
+(8, 'Год выпуска');
 
 -- --------------------------------------------------------
 
@@ -72,31 +72,42 @@ CREATE TABLE `parameter_values` (
 --
 
 INSERT INTO `parameter_values` (`id`, `parameter_id`, `name`) VALUES
-(25, 1, 'Белый'),
-(27, 1, 'Голубой'),
-(18, 1, 'Жёлтый'),
-(8, 1, 'Зеленый'),
-(24, 1, 'Коричневый'),
-(23, 1, 'Ораньжевый'),
-(26, 1, 'Серебристый'),
-(28, 1, 'Серый'),
-(1, 1, 'Синий'),
-(12, 1, 'Черный'),
-(17, 3, '1.4 л. 125 л.с. TSI'),
-(19, 3, '1.4 л. 150 л.с. TSI'),
-(13, 3, '1.6 л. 90 л.с. MPI'),
-(16, 3, '1.6л. 110 л.с. MPI'),
-(29, 3, '2.0л. 180 л.с. TSI'),
-(20, 3, '2.0л. 190 л.с. TSI'),
-(30, 3, '2.0л. 220 л.с. TSI'),
-(31, 3, '3.6 л. 220л.с. TSI'),
-(32, 3, '3.6 л. 249л.с. FSI'),
-(34, 3, '3.6 л. 340л.с. TSI'),
+(66, 3, '2.0 л. 150 л.с.'),
+(62, 3, '2.2 л. 109 л.с.'),
+(63, 3, '2.2 л. 136 л.с.'),
+(67, 3, '2.5 л. 181 л.с.'),
+(68, 3, '3.5 л. 249 л.с.'),
+(40, 3, '5.0 л. 130 л.с.'),
 (14, 4, '5-MKП'),
 (15, 4, '6-АКП'),
 (22, 4, '6-МКП'),
 (21, 4, '7-АКП'),
-(33, 4, '8-АКП');
+(33, 4, '8-АКП'),
+(38, 6, 'Белый'),
+(64, 6, 'Жёлтый'),
+(37, 6, 'Зелёный'),
+(69, 6, 'Чёрный'),
+(41, 8, '2000'),
+(42, 8, '2001'),
+(44, 8, '2002'),
+(43, 8, '2003'),
+(45, 8, '2004'),
+(46, 8, '2005'),
+(47, 8, '2006'),
+(48, 8, '2007'),
+(49, 8, '2008'),
+(50, 8, '2009'),
+(51, 8, '2010'),
+(52, 8, '2011'),
+(53, 8, '2012'),
+(54, 8, '2013'),
+(55, 8, '2014'),
+(56, 8, '2015'),
+(57, 8, '2016'),
+(58, 8, '2017'),
+(59, 8, '2018'),
+(60, 8, '2019'),
+(61, 8, '2020');
 
 -- --------------------------------------------------------
 
@@ -116,45 +127,30 @@ CREATE TABLE `parameter_value_product` (
 --
 
 INSERT INTO `parameter_value_product` (`id`, `parameter_value_id`, `product_id`) VALUES
-(13, 8, 4),
-(14, 13, 4),
-(15, 14, 4),
-(16, 18, 8),
-(17, 12, 9),
-(18, 18, 10),
-(19, 17, 10),
-(20, 14, 10),
-(21, 16, 8),
-(22, 14, 8),
-(23, 19, 9),
-(25, 22, 9),
-(26, 1, 11),
-(27, 19, 11),
-(28, 15, 11),
-(29, 23, 12),
-(30, 20, 12),
-(31, 21, 12),
-(32, 18, 13),
-(33, 20, 13),
-(34, 21, 13),
-(35, 25, 14),
-(36, 29, 14),
-(37, 21, 14),
-(38, 24, 15),
-(39, 30, 15),
-(40, 21, 15),
-(41, 12, 16),
-(42, 31, 16),
-(43, 33, 16),
-(44, 1, 17),
-(45, 32, 17),
-(46, 33, 17),
-(47, 26, 18),
-(48, 32, 18),
-(49, 33, 18),
-(50, 18, 19),
-(51, 34, 19),
-(52, 33, 19);
+(82, 40, 32),
+(83, 14, 32),
+(84, 38, 32),
+(85, 56, 32),
+(86, 62, 33),
+(87, 21, 33),
+(88, 38, 33),
+(89, 53, 33),
+(90, 63, 34),
+(91, 33, 34),
+(92, 64, 34),
+(93, 54, 34),
+(94, 66, 35),
+(95, 21, 35),
+(96, 38, 35),
+(97, 60, 35),
+(98, 67, 36),
+(99, 21, 36),
+(100, 69, 36),
+(101, 60, 36),
+(102, 68, 37),
+(103, 33, 37),
+(104, 69, 37),
+(105, 61, 37);
 
 -- --------------------------------------------------------
 
@@ -165,28 +161,20 @@ INSERT INTO `parameter_value_product` (`id`, `parameter_value_id`, `product_id`)
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `name` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` mediumint(8) UNSIGNED NOT NULL
+  `name` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `price`) VALUES
-(4, 'Polo', 800000),
-(8, 'Jetta', 1485000),
-(9, 'Passat', 1829000),
-(10, 'Polo', 1100000),
-(11, 'Jetta', 1860000),
-(12, 'Passat', 2479000),
-(13, 'Arteon', 3000000),
-(14, 'Tiguan', 2310000),
-(15, 'Tiguan', 2810000),
-(16, 'Teramont', 3580000),
-(17, 'Teramont', 4050000),
-(18, 'Touareg', 5000000),
-(19, 'Touareg', 5300000);
+INSERT INTO `products` (`id`, `name`) VALUES
+(32, 'ПАЗ-32053/5'),
+(33, 'Mercedes-sprinter'),
+(34, 'Mercedes-sprinter'),
+(35, 'Toyota Camry'),
+(36, 'Toyota Camry'),
+(37, 'Toyota Camry');
 
 -- --------------------------------------------------------
 
@@ -257,25 +245,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `parameters`
 --
 ALTER TABLE `parameters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `parameter_values`
 --
 ALTER TABLE `parameter_values`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT для таблицы `parameter_value_product`
 --
 ALTER TABLE `parameter_value_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

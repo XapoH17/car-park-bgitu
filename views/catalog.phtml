@@ -5,7 +5,7 @@
             <?php
             $filePath = 'images/products/' . $product['id'] . '.jpg';
 
-            if (!file_exists($basePath . $filePath)) {
+            if (!file_exists(BASE_PATH . $filePath)) {
                 $filePath = 'images/placeholders/product.jpg';
             }
             ?>

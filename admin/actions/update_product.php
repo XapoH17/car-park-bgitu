@@ -12,12 +12,11 @@ validateRequired($_POST, 'id');
 validateRequired($_POST, 'name');
 
 $id = intval($_POST['id']);
-$name = mysqli_real_escape_string($link, trim($_POST['name']));
 
+$name = mysqli_real_escape_string($link, trim($_POST['name']));
 
 if (!mysqli_query($link, "UPDATE products SET name='$name' WHERE id=$id")) {
     $_SESSION['flash'] = [
-        'name' => $name,
         'message' => mysqli_error($link),
     ];
 
@@ -30,9 +29,14 @@ if (!mysqli_query($link, "UPDATE products SET name='$name' WHERE id=$id")) {
  * @desc Загрузка файла
  */
 
-//----
-// Какаято кодяря, которая в итоге загружает файл и ложит его в папку images/products/{id}.jpg
-//----
+$uploadPath = BASE_PATH . '/images/products/' . $id . '.jpg';
+
+if (!move_uploaded_file($_FILES['file']['tmp_name'], $uploadPath)) {
+    echo "Файл успешно загружен";
+    $_SESSION['flash'] = [
+        'message' => "Файл не загружен",
+    ];
+}
 
 $parameters = getParameters();
 
